@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITodoRecord, STATUS_TODO } from 'src/app/models/todo-item';
-import { CrudTodoService } from 'src/app/services/crud-todo.service';
 
 @Component({
   selector: 'app-todo-list-item',
