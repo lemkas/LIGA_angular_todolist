@@ -19,7 +19,6 @@ export class TodoListComponent implements OnInit {
 
   deleteTodo(id: string) {
     this.crudTodoService.delete(id);
-    console.log(this.todos, 'from component');
     this.todos = this.crudTodoService.getAll();
   }
 
@@ -34,16 +33,14 @@ export class TodoListComponent implements OnInit {
     this.text = '';
   }
 
-  createTodo(ev: any) {
-    console.log(ev);
-    //   if (text) {
-    //     const newTodo: ITodoRecord = {
-    //       id: String(Math.random()),
-    //       text: STATUS_TODO.usual,
-    //       status,
-    //     };
-    //     this.crudTodoService.add(newTodo);
-    //     this.text = '';
-    //   }
+  createTodo(text: string) {
+    if (text) {
+      const newTodo: ITodoRecord = {
+        id: String(Math.random()),
+        text,
+        status: STATUS_TODO.usual,
+      };
+      this.crudTodoService.add(newTodo);
+    }
   }
 }

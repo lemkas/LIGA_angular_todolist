@@ -7,12 +7,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class TodoInputComponent implements OnInit {
   text!: string;
-  @Output() createTodo = new EventEmitter<any>();
+  @Output() addHandler = new EventEmitter();
   constructor() {}
-
-  inputHandler() {
-    this.createTodo.emit(this.text);
+  createTodo(text: string) {
+    this.addHandler.emit(this.text);
+    this.text = '';
   }
-
   ngOnInit(): void {}
 }
