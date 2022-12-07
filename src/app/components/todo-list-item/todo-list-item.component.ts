@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITodoRecord } from 'src/app/models/todo-item';
 import { CrudTodoService } from 'src/app/services/crud-todo.service';
 
@@ -9,6 +9,7 @@ import { CrudTodoService } from 'src/app/services/crud-todo.service';
 })
 export class TodoListItemComponent implements OnInit {
   @Input() todo!: ITodoRecord;
+  @Output() deleteTodoHandler = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}

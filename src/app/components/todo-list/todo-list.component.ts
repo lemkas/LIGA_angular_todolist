@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ITodoRecord, STATUS_TODO } from 'src/app/models/todo-item';
 import { CrudTodoService } from 'src/app/services/crud-todo.service';
 
@@ -9,20 +9,21 @@ import { CrudTodoService } from 'src/app/services/crud-todo.service';
 })
 export class TodoListComponent implements OnInit {
   @Input() todos: ITodoRecord[] = this.crudTodoService.getAll();
-  @Output() text!: string;
+  text!: string;
+  status!: STATUS_TODO;
   constructor(public crudTodoService: CrudTodoService) {}
 
   ngOnChanges() {}
 
   ngOnInit(): void {}
 
-  deleteTodoHandler(id: string) {
+  deleteTodo(id: string) {
     this.crudTodoService.delete(id);
     console.log(this.todos, 'from component');
     this.todos = this.crudTodoService.getAll();
   }
 
-  editInputHandler(id: string, text: string, status: STATUS_TODO) {
+  editTodo(id: string, text: string, status: STATUS_TODO) {
     const editedTodo: ITodoRecord = {
       id,
       text,
@@ -31,5 +32,18 @@ export class TodoListComponent implements OnInit {
 
     this.crudTodoService.edit(editedTodo);
     this.text = '';
+  }
+
+  createTodo(ev: any) {
+    console.log(ev);
+    //   if (text) {
+    //     const newTodo: ITodoRecord = {
+    //       id: String(Math.random()),
+    //       text: STATUS_TODO.usual,
+    //       status,
+    //     };
+    //     this.crudTodoService.add(newTodo);
+    //     this.text = '';
+    //   }
   }
 }

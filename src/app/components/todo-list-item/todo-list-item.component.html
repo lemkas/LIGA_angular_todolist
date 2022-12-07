@@ -1,5 +1,5 @@
 <div class="todo-list-item">
   <p>{{ todo.text }}</p>
   <span>{{ todo.status }}</span>
-  <span>X</span>
+  <span (click)="deleteTodoHandler.emit(todo.id)">X</span>
 </div>
