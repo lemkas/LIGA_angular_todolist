@@ -4,7 +4,7 @@ import { ITodoRecord, STATUS_TODO } from '../models/todo-item';
 @Injectable({
   providedIn: 'root',
 })
-export class TodoService {
+export class CrudTodoService {
   _todos: ITodoRecord[] = [
     {
       id: '1',
