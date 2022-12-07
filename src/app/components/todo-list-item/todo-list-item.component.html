@@ -1,5 +1,10 @@
 <div class="todo-list-item">
   <p>{{ todo.text }}</p>
   <span>{{ todo.status }}</span>
+  <span (click)="showEditToggle()">Edit</span>
   <span (click)="deleteTodoHandler.emit(todo.id)">X</span>
+</div>
+<div class="edit-todo" *ngIf="showEdit">
+  <input type="text" [(ngModel)]="text" />
+  <button (click)="editTodo(todo.id, this.text, todo.status)">confirm</button>
 </div>

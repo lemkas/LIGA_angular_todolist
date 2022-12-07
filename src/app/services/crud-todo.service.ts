@@ -33,7 +33,6 @@ export class CrudTodoService {
 
   delete(id: string) {
     this._todos = this._todos.filter((todo) => !(todo.id == id));
-    console.log('delete', id, this._todos);
   }
 
   edit(editedTodo: ITodoRecord) {
@@ -41,6 +40,5 @@ export class CrudTodoService {
       (todo) => todo.id === editedTodo.id
     );
     this._todos[oldTodoIndex] = editedTodo;
-    console.log(this._todos);
   }
 }
