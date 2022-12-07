@@ -1,4 +1,4 @@
-export interface TodoItem {
+export interface ITodoRecord {
   id: string;
   status: STATUS_TODO;
   text: string;
