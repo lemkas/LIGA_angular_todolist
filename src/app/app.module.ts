@@ -8,14 +8,10 @@ import { AppComponent } from './app.component';
 import { TodoInputComponent } from './components/todo-input/todo-input.component';
 import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListComponent,
-    TodoListItemComponent,
-    TodoInputComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
