@@ -12,6 +12,7 @@ export class TodoListItemComponent implements OnInit {
   @Output() editTodoHandler = new EventEmitter();
   showEdit: boolean = false;
   text!: string;
+  status!: STATUS_TODO;
   constructor() {}
   showEditToggle() {
     this.showEdit = !this.showEdit;

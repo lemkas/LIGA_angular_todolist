@@ -6,5 +6,10 @@
 </div>
 <div class="edit-todo" *ngIf="showEdit">
   <input type="text" [(ngModel)]="text" />
-  <button (click)="editTodo(todo.id, this.text, todo.status)">confirm</button>
+  <select [(ngModel)]="status">
+    <option value="usual">usual</option>
+    <option value="important">important</option>
+    <option value="done">done</option>
+  </select>
+  <button (click)="editTodo(todo.id, this.text, this.status)">confirm</button>
 </div>
