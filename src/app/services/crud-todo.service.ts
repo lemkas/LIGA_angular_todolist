@@ -23,8 +23,12 @@ export class CrudTodoService {
     },
   ];
 
-  getAll(): ITodoRecord[] {
-    return this._todos;
+  getAll(filter?: STATUS_TODO): ITodoRecord[] {
+    if (filter) {
+      return this._todos.filter((todo) => todo.status === filter);
+    } else {
+      return this._todos;
+    }
   }
 
   add(newTodo: ITodoRecord) {

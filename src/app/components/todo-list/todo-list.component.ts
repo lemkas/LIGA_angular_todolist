@@ -25,6 +25,10 @@ export class TodoListComponent implements OnInit {
     }, 200);
   }
 
+  filterTodo(filter: STATUS_TODO) {
+    this.todos = this.crudTodoService.getAll(filter);
+  }
+
   createTodo(text: string) {
     if (text) {
       const newTodo: ITodoRecord = {

@@ -1,0 +1,43 @@
+<form class="filter-form" (change)="changeFilterHandler(filter)">
+  <div class="filter-form-item">
+    <input
+      type="radio"
+      [(ngModel)]="filter"
+      name="filter"
+      value=""
+      id="all"
+      checked="true"
+    />
+    <label for="all">all</label>
+  </div>
+  <div class="filter-form-item">
+    <input
+      type="radio"
+      [(ngModel)]="filter"
+      name="filter"
+      value="usual"
+      id="usual"
+    />
+    <label for="usual">usual</label>
+  </div>
+  <div class="filter-form-item">
+    <input
+      type="radio"
+      [(ngModel)]="filter"
+      name="filter"
+      value="important"
+      id="important"
+    />
+    <label for="important">important</label>
+  </div>
+  <div class="filter-form-item">
+    <input
+      type="radio"
+      [(ngModel)]="filter"
+      name="filter"
+      value="done"
+      id="done"
+    />
+    <label for="done">done</label>
+  </div>
+</form>

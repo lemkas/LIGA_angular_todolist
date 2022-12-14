@@ -9,6 +9,7 @@ import { TodoInputComponent } from './components/todo-input/todo-input.component
 import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { TodoFilterComponent } from './components/todo-filter/todo-filter.component';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,5 +1,6 @@
 <h1 class="header">TODO</h1>
 <app-todo-input (addHandler)="createTodo($event)"></app-todo-input>
+<app-todo-filter (filterTodo)="filterTodo($event)"></app-todo-filter>
 <app-todo-list-item
   *ngFor="let todo of todos"
   [todo]="todo"
