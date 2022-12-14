@@ -12,22 +12,25 @@ export class TodoListComponent implements OnInit {
   @Input() todos: ITodoRecord[] = this.crudTodoService.getAll();
   text!: string;
   status!: STATUS_TODO;
+  filter?: STATUS_TODO;
   constructor(public crudTodoService: CrudTodoService) {}
 
   ngOnInit(): void {}
 
   deleteTodo(id: string) {
     this.crudTodoService.delete(id);
-    this.todos = this.crudTodoService.getAll();
+    this.todos = this.crudTodoService.getAll(this.filter);
   }
   editTodo(editedTodo: ITodoRecord) {
     console.log(editedTodo);
     setTimeout(() => {
       this.crudTodoService.edit(editedTodo);
+      this.todos = this.crudTodoService.getAll(this.filter);
     }, 200);
   }
 
   filterTodo(filter?: STATUS_TODO) {
+    this.filter = filter;
     this.todos = this.crudTodoService.getAll(filter);
   }
 

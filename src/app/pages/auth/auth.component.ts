@@ -17,10 +17,7 @@ export class AuthComponent implements OnInit {
 
   AuthHandler(email: string, password: string) {
     if (email && password) {
-      console.log(
-        this.authService.login(email, password).subscribe(),
-        'from component'
-      );
+      this.authService.login(email, password).subscribe();
       this.email = '';
       this.password = '';
     } else {
