@@ -6,12 +6,17 @@ import { TodoFilterComponent } from './components/todo-filter/todo-filter.compon
 import { TodoInputComponent } from './components/todo-input/todo-input.component';
 import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { GetTodosGuardGuard } from './guards/get-todos-guard.guard';
 import { AuthComponent } from './pages/auth/auth.component';
 import { TodoComponent } from './pages/todo/todo.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
-  { path: 'todos', component: TodoComponent },
+  {
+    path: 'todos',
+    component: TodoComponent,
+    canActivate: [GetTodosGuardGuard],
+  },
 ];
 
 @NgModule({
@@ -25,5 +30,6 @@ const routes: Routes = [
     TodoFilterComponent,
   ],
   exports: [RouterModule],
+  providers: [GetTodosGuardGuard],
 })
 export class AppRoutingModule {}

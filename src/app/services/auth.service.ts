@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl: string = `${environment.backendOrigin}/auth`;
+  private baseUrl: string = `${environment.backendOrigin}/auth`;
   constructor(private http: HttpClient, private routes: Router) {}
   login(email: string, password: string) {
     console.log(this.baseUrl);
@@ -25,6 +25,10 @@ export class AuthService {
           return;
         })
       );
+  }
+
+  getToken() {
+    return localStorage.getItem('del_todos_auth_token');
   }
 
   logout() {

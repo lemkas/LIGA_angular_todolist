@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { ISearchSpec } from 'src/app/models/search-spec';
 import { ITodoRecord, STATUS_TODO } from 'src/app/models/todo-item';
 import { CrudTodoService } from 'src/app/services/crud-todo.service';
 
@@ -20,12 +21,13 @@ export class TodoListComponent implements OnInit {
     this.todos = this.crudTodoService.getAll();
   }
   editTodo(editedTodo: ITodoRecord) {
+    console.log(editedTodo);
     setTimeout(() => {
       this.crudTodoService.edit(editedTodo);
     }, 200);
   }
 
-  filterTodo(filter: STATUS_TODO) {
+  filterTodo(filter?: STATUS_TODO) {
     this.todos = this.crudTodoService.getAll(filter);
   }
 
