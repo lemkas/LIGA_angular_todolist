@@ -11,6 +11,10 @@
   margin-bottom: 5px;
 }
 
+.done > p {
+  text-decoration: overline;
+}
+
 .todo-list-item span {
   cursor: pointer;
 }

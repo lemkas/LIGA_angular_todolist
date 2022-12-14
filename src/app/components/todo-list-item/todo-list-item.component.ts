@@ -13,6 +13,10 @@ export class TodoListItemComponent implements OnInit {
   showEdit: boolean = false;
   text!: string;
   status!: STATUS_TODO;
+  // class: string =
+  //   this.todo.status === STATUS_TODO.done
+  //     ? 'todo-list-item done'
+  //     : 'todo-list-item';
   constructor() {}
   showEditToggle() {
     this.showEdit = !this.showEdit;
@@ -21,8 +25,8 @@ export class TodoListItemComponent implements OnInit {
   editTodo(id: string, text: string, status: STATUS_TODO) {
     const editedTodo: ITodoRecord = {
       id,
-      text,
-      status,
+      text: text ? text : this.todo.text,
+      status: status ? status : this.todo.status,
     };
     this.editTodoHandler.emit(editedTodo);
   }
