@@ -7,6 +7,7 @@ import { TodoInputComponent } from './components/todo-input/todo-input.component
 import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { GetTodosGuardGuard } from './guards/get-todos-guard.guard';
+import { AboutComponent } from './pages/about/about.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { TodoComponent } from './pages/todo/todo.component';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     component: TodoComponent,
     canActivate: [GetTodosGuardGuard],
   },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
@@ -28,6 +30,7 @@ const routes: Routes = [
     TodoListItemComponent,
     TodoInputComponent,
     TodoFilterComponent,
+    AboutComponent,
   ],
   exports: [RouterModule],
   providers: [GetTodosGuardGuard],
