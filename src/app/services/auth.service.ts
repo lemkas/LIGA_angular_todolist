@@ -27,7 +27,7 @@ export class AuthService {
       );
   }
 
-  getToken() {
+  getToken(): string | null {
     return localStorage.getItem('del_todos_auth_token');
   }
 
