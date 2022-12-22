@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { TodoFilterComponent } from './components/todo-filter/todo-filter.component';
@@ -22,7 +22,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormsModule, BrowserModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    FormsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
     AuthComponent,
     TodoComponent,

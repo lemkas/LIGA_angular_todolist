@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ISearchSpec } from '../models/search-spec';
 import { ITodoRecord, STATUS_TODO } from '../models/todo-item';
 
 @Injectable({
@@ -23,9 +24,23 @@ export class CrudTodoService {
     },
   ];
 
-  getAll(filter?: STATUS_TODO): ITodoRecord[] {
-    if (filter) {
-      return this._todos.filter((todo) => todo.status === filter);
+  getAll(searchSpec?: ISearchSpec): ITodoRecord[] {
+    if (searchSpec?.filter && searchSpec?.search) {
+      return this._todos.filter(
+        (todo) =>
+          todo.status === searchSpec.filter &&
+          todo.text
+            .toLocaleLowerCase()
+            .includes(searchSpec.search?.toLocaleLowerCase() ?? '')
+      );
+    } else if (!searchSpec?.filter && searchSpec?.search) {
+      return this._todos.filter((todo) =>
+        todo.text
+          .toLocaleLowerCase()
+          .includes(searchSpec.search?.toLocaleLowerCase() ?? '')
+      );
+    } else if (searchSpec?.filter && !searchSpec?.search) {
+      return this._todos.filter((todo) => todo.status === searchSpec.filter);
     } else {
       return this._todos;
     }

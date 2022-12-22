@@ -1,9 +1,13 @@
-<form class="filter-form" (change)="changeFilterHandler(filter, text)">
-  <input type="text" [(ngModel)]="text" name="text" />
+<form
+  class="filter-form"
+  [formGroup]="filterForm"
+  (change)="changeFilterHandler()"
+>
+  <input type="text" formControlName="search" />
   <div class="filter-form-item">
     <input
       type="radio"
-      [(ngModel)]="filter"
+      formControlName="filter"
       name="filter"
       value=""
       id="all"
@@ -14,7 +18,7 @@
   <div class="filter-form-item">
     <input
       type="radio"
-      [(ngModel)]="filter"
+      formControlName="filter"
       name="filter"
       value="usual"
       id="usual"
@@ -24,7 +28,7 @@
   <div class="filter-form-item">
     <input
       type="radio"
-      [(ngModel)]="filter"
+      formControlName="filter"
       name="filter"
       value="important"
       id="important"
@@ -34,7 +38,7 @@
   <div class="filter-form-item">
     <input
       type="radio"
-      [(ngModel)]="filter"
+      formControlName="filter"
       name="filter"
       value="done"
       id="done"
