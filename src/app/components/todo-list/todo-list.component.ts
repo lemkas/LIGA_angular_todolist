@@ -43,5 +43,6 @@ export class TodoListComponent implements OnInit {
       };
       this.crudTodoService.add(newTodo);
     }
+    this.todos = this.crudTodoService.getAll(this.searchSpec);
   }
 }

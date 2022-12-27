@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ISearchSpec } from 'src/app/models/search-spec';
 import { STATUS_TODO } from 'src/app/models/todo-item';
+import { FilterValidators } from './filter.validators';
 
 @Component({
   selector: 'app-todo-filter',
@@ -12,16 +13,9 @@ export class TodoFilterComponent implements OnInit {
   filterForm!: FormGroup;
   filter!: STATUS_TODO;
   text!: string;
+  validError!: string;
   @Output() filterTodo = new EventEmitter();
-  // changeFilterHandler(filter?: STATUS_TODO, text?: string) {
-  //   const searchSpec: ISearchSpec = {
-  //     filter,
-  //     text,
-  //   };
-
-  //   this.filterTodo.emit(filter);
-  // }
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private validators: FilterValidators) {}
 
   ngOnInit(): void {
     this.initFilterForm();
@@ -29,13 +23,17 @@ export class TodoFilterComponent implements OnInit {
 
   initFilterForm() {
     this.filterForm = this.fb.group({
-      search: '',
+      search: ['', [], this.validators.forbiddenWords],
       filter: '',
     });
   }
 
   changeFilterHandler() {
-    console.log(this.filterForm.value);
+    console.log(this.filterForm.errors);
     this.filterTodo.emit(this.filterForm.value);
+  }
+
+  toggleValidError() {
+    return this.filterForm.get('search')!.errors!.forbiddenWord;
   }
 }

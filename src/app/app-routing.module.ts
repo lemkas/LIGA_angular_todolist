@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FilterValidators } from './components/todo-filter/filter.validators';
 import { TodoFilterComponent } from './components/todo-filter/todo-filter.component';
 import { TodoInputComponent } from './components/todo-input/todo-input.component';
 import { TodoListItemComponent } from './components/todo-list-item/todo-list-item.component';
@@ -38,6 +39,6 @@ const routes: Routes = [
     AboutComponent,
   ],
   exports: [RouterModule],
-  providers: [GetTodosGuardGuard],
+  providers: [GetTodosGuardGuard, FilterValidators],
 })
 export class AppRoutingModule {}

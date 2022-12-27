@@ -4,6 +4,7 @@
   (change)="changeFilterHandler()"
 >
   <input type="text" formControlName="search" />
+  <small *ngIf="toggleValidError()">Слово запрещено</small>
   <div class="filter-form-item">
     <input
       type="radio"
